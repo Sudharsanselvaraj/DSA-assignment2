@@ -1,0 +1,47 @@
+In a classroom, the teacher wants to create a list of students who have submitted their assignments. As students submit their work, the teacher needs to add each student's name to the list in the order of submission. Help the teacher by guiding them on how to use a proper data structure to insert each student's name into the list as they submit their assignment. Write a C program that uses an array to manage the list and demonstrates how to insert new student names into the array.
+
+CODE :
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STUDENTS 100  // Maximum number of students
+
+int main() {
+    char students[MAX_STUDENTS][50];  
+    int count = 0;
+
+    while (1) {
+        char name[50];
+        printf("Enter student name (or type 'exit' to stop): ");
+        scanf("%s", name);
+        if (strcmp(name, "exit") == 0) {
+            break;
+        }
+        if (count < MAX_STUDENTS) {
+            strcpy(students[count], name);
+            count++;
+        } else {
+            printf("The list is full, can't add more students.\n");
+        }
+    }
+    printf("\nList of students who submitted their assignments:\n");
+    for (int i = 0; i < count; i++) {
+        printf("%d. %s\n", i + 1, students[i]);
+    }
+
+    return 0;
+}
+
+OUTPUT :
+
+Enter student name (or type 'exit' to stop): Alice
+Enter student name (or type 'exit' to stop): Bob
+Enter student name (or type 'exit' to stop): Charlie
+Enter student name (or type 'exit' to stop): exit
+
+List of students who submitted their assignments:
+1. Alice
+2. Bob
+3. Charlie
+
