@@ -1,0 +1,41 @@
+Consider an object Shape that encompasses both a Square and a Rectangle as the data members. The Square object should have an attribute for its area, while the Rectangle object should have attributes for length and breadth. Identify the most suitable data structures for this scenario and write a C program to define the structure and demonstrate their usage.
+
+CODE :
+
+#include <stdio.h>
+struct Square {
+    float area;
+};
+struct Rectangle {
+    float length;
+    float breadth;
+};
+struct Shape {
+    struct Square square;
+    struct Rectangle rectangle;
+};
+
+int main() {
+    struct Shape shape;
+    float side;
+    printf("Enter the side length of the square: ");
+    scanf("%f", &side);
+    shape.square.area = side * side; // Calculate the area of the square
+    printf("Enter the length of the rectangle: ");
+    scanf("%f", &shape.rectangle.length);
+    printf("Enter the breadth of the rectangle: ");
+    scanf("%f", &shape.rectangle.breadth);
+    printf("\nArea of the square: %.2f\n", shape.square.area);
+    printf("Area of the rectangle: %.2f\n", shape.rectangle.length * shape.rectangle.breadth);
+
+    return 0;
+}
+
+OUTPUT :
+
+Enter the side length of the square: 4
+Enter the length of the rectangle: 5
+Enter the breadth of the rectangle: 3
+
+Area of the square: 16.00
+Area of the rectangle: 15.00
